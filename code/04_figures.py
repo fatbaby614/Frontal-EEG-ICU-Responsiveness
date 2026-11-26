@@ -218,7 +218,7 @@ def fig2():
     handles = [Line2D([0], [0], color=COLOR[m], lw=1.6, label=LABEL_NICE[m])
                for m in show]
     handles.append(Line2D([0], [0], ls=":", color="0.5", lw=0.8,
-                          label=f"Prevalence = {prev:.2f}"))
+                          label=f"Full-cohort prevalence ({prev:.2f})"))
     fig.legend(handles=handles, loc="lower center", bbox_to_anchor=(0.5, 0.01),
                ncol=4, fontsize=6.5, frameon=False, columnspacing=1.2)
     fig.subplots_adjust(left=0.06, right=0.98, top=0.86, bottom=0.32, wspace=0.36)

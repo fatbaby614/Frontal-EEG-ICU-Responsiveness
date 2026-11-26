@@ -115,7 +115,8 @@ def compute_subject(row, seg_s: float, nw: float) -> dict | None:
     for bname, bnd in C.BANDS_CANON.items():
         m = (freqs >= bnd[0]) & (freqs <= bnd[1])
         out[f"F2_norm_{bname}"] = float(cn[:, m].mean())
-        out[f"F2_logabs_{bname}"] = float(np.log10(np.clip(cb[:, m].mean(), 1e-30, None)))
+        out[f"F2_logabs_{bname}"] = float(np.log10(
+            np.clip(cb[:, m].mean(axis=1), 1e-30, None)).mean())
     out["F2_spen"] = float(C.spectral_entropy(freqs, cn).mean())
     sef95 = C.sef(freqs, cb, 0.95)
     out["F2_sef95"] = float(np.nanmedian(sef95))
